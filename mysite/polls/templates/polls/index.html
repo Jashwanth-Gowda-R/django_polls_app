@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polls</title>
+</head>
+<body>
+
+<!--{% if latest_question%}-->
+<!--    <ol>-->
+<!--        {% for question in latest_question %}-->
+<!--          <li><a href="/polls/{{question_id}}"><br>{{question.question_text}}</br></a></li>-->
+<!--        {% endfor %}-->
+<!--    </ol>-->
+<!--{% else %}-->
+<!--     <p>no more questions fo u,nedded u can add some</p>-->
+<!--{% endif %}-->
+
+{% if latest_question %}
+    <ul>
+    {% for question in latest_question %}
+<!--        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>-->
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+
+</body>
+</html>
